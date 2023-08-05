@@ -37,6 +37,55 @@ function sum2 (...args){
     return args.reduce((a,b) => a+b);
 }
 
-console.log(sum2(1,2,3,4,5,6));
+console.log(sum2(1,2,3,4,5,6)); 
 
+//DEFAULT PARAMETERS:
+
+
+function interest(principal, rate =3.5, years=5){
+    return principal * rate / years; 
+}
+
+console.log(interest(1000));
+
+//GETTERS AND SETTERS
+
+person = {
+    stName : "Oguzhan",
+    tName : "Yilmaz",
+    get fullName() {
+        return `${stName} ${tName}`;
+    },
+    set fullName(value) {
+        if(typeof value !== 'string'){
+            throw new Error('Value is not a string.!');
+        };
+
+        const parts = value.split(' ');
+
+        if(parts.length !== 2){
+            throw new Error('Name or lastname is not entered properly.!');
+        };
+
+
+        this.stName = parts[0];
+        this.tName = parts[1];
+    }
+
+};
+
+person.fullName = 'Irmak Karslioglu'; //set metodu calisti ve otomaitk olarak set methodu icindeki scope işlenmiş oldu. 
+
+console.log(person);
+
+
+//TRY CATCH METHOD.
+// try {person.fullName = '';}
+try {
+    person.fullName = null;
+}
+catch (e){
+    alert(e)
+};
+  
 
